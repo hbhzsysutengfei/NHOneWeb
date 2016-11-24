@@ -10,8 +10,22 @@
     <property name="Name" column="name" length="20" not-null="true" unique="true"/>
     <property name="Gender" column="gender"/>
     <property name="Weight" column="weight"/>
-    <many-to-one name="Department" column="departmentname" class="DepartmentEntity" cascade="save-update" property-ref="DepartmentName">      
-    </many-to-one>
+    <many-to-one name="Department" column="departmentname" class="DepartmentEntity" cascade="save-update" property-ref="DepartmentName"></many-to-one>
+
+    <!--<list name="Phones" table="phone" >
+      <key column="phone_id"/>
+      <list-index />
+      <one-to-many class="PhoneEntity"/>
+    </list>-->
+
+    <list name="Phones" table="cat_phone">
+      <key column="cat_id" property-ref="Name"/>
+      <list-index />
+      <many-to-many class="PhoneEntity" column="phone_id" property-ref="Number"/>
+    </list>
+    
+      
+    
     <property name="CreateTime" column="create_time" type="Timestamp"  not-null="true"/>
     <property name="UpdateTime" column="update_time" type="Timestamp"  not-null="true"/>
     

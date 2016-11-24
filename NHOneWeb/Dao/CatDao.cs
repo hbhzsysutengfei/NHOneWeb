@@ -41,6 +41,10 @@ namespace NHOneWeb.Dao
         {
             return session.Load<CatEntity>(id);
         }
+        public CatEntity getByName(string name)
+        {
+            return session.QueryOver<CatEntity>().Where( m => m.Name == name).SingleOrDefault();
+        }
 
     }
 }

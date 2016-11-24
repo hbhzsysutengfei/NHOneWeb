@@ -75,6 +75,9 @@
     <EmbeddedResource Include="Mapper\Department.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mapper\Phone.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -102,10 +105,12 @@
     <Compile Include="Dao\CatDao.cs" />
     <Compile Include="Dao\DataDao.cs" />
     <Compile Include="Dao\DepartmentDao.cs" />
+    <Compile Include="Dao\PhoneDao.cs" />
     <Compile Include="Helper\NHibernateHelper.cs" />
     <Compile Include="Model\CatEntity.cs" />
     <Compile Include="Model\DepartmentEntity.cs" />
     <Compile Include="Model\Entity.cs" />
+    <Compile Include="Model\PhoneEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

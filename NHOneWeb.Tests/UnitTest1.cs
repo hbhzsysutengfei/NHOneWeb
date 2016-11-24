@@ -4,6 +4,7 @@ using NHibernate;
 using NHOneWeb.Helper;
 using NHOneWeb.Model;
 using NHOneWeb.Dao;
+using System.Collections.Generic;
 
 namespace NHOneWeb.Tests
 {
@@ -91,6 +92,33 @@ namespace NHOneWeb.Tests
         //    }
         //    CatEntity[] cats = new CatEntity[10];
         //}
+
+
+        [TestMethod]
+        public void TestOneToMany()
+        {
+            PhoneEntity[] mPhones  = new PhoneEntity[5];
+            PhoneEntity[] tPhones  = new PhoneEntity[5];
+            for(int index = 0 ; index < 5; index++){
+                mPhones[index] = new PhoneEntity('M', "158-" + index);
+                tPhones[index] = new PhoneEntity('T', "020-" + index);
+            }
+            PhoneDao phoneDao = new PhoneDao();
+            phoneDao.save(mPhones);
+            phoneDao.save(tPhones);
+
+            CatEntity cat = new CatEntity("lisi", 'F', 100.0f);
+            IList<PhoneEntity> phones = new List<PhoneEntity>();
+            phones.Add(mPhones[0]);
+            phones.Add(tPhones[0]);
+            cat.Phones = phones;
+            CatDao catDao = new CatDao();
+            catDao.save(cat);
+
+            CatEntity getCat = catDao.getByName("lisi");
+
+            
+        }
 
     }
 }

@@ -17,10 +17,15 @@ namespace NHOneWeb.Model
         }
        
         public virtual string Name { get; set; }
+
         public virtual char Gender { get; set; }
+
         public virtual float Weight{ get; set; }
+
         public virtual DepartmentEntity Department { get; set; }
 
+        public virtual IList<PhoneEntity> Phones { get; set; }
+        
         public override bool Equals(object obj)
         {
             CatEntity cat = obj as CatEntity;
